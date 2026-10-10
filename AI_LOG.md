@@ -34,3 +34,8 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 - Verification: first boulders and wall runs are recorded in `results/step6-*.txt`; compare actual scoreboard to the pre-run hypothesis.
 
 - Actual first boulders result: goal reached in 124 ticks, 13 replans, 0 blocked, 0 needless. The three-replan hypothesis was wrong: successive partial observations of each boulder caused multiple legitimate invalidations. Wall also reached the goal with 0 blocked and 0 needless (17 replans). No result was retroactively relabeled as a prediction.
+
+## 6. Dynamic scenarios
+
+- Verification: popup reaches in 130 ticks with 3 replans; its behind-rover event at tick 80 produces no path event. Goal-blocked reaches in 166 ticks; empty stop at 104, recovery at 144, 0 blocked/needless in both runs.
+- Kept: empty-publication suppression and occupancy-change recovery worked without modification. No simulated success was invented and no supplied tests/worlds were edited.

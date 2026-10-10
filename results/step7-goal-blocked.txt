@@ -1,0 +1,59 @@
+[launch] Scenario 'goal-blocked': Something blocks the goal for 8 seconds when the rover gets close, then clears.
+[launch] Sensor: clean   tick = 0.2 s of simulated time
+
+[planner] t=0.0s path=36.77m replans=0 since_plan=0.0s reason=initial plan
+[planner] t=1.0s path=36.77m replans=0 since_plan=1.0s reason=remaining path valid
+[planner] t=2.0s path=36.77m replans=0 since_plan=2.0s reason=remaining path valid
+[planner] t=2.8s path=33.41m replans=1 since_plan=0.0s reason=path blocked ahead
+[planner] t=3.0s path=33.70m replans=2 since_plan=0.0s reason=path blocked ahead
+[planner] t=3.2s path=33.28m replans=3 since_plan=0.0s reason=path blocked ahead
+[planner] t=4.2s path=33.28m replans=3 since_plan=1.0s reason=remaining path valid
+[planner] t=5.2s path=33.28m replans=3 since_plan=2.0s reason=remaining path valid
+[planner] t=6.2s path=33.28m replans=3 since_plan=3.0s reason=remaining path valid
+[planner] t=7.2s path=33.28m replans=3 since_plan=4.0s reason=remaining path valid
+[planner] t=8.2s path=33.28m replans=3 since_plan=5.0s reason=remaining path valid
+[planner] t=9.2s path=33.28m replans=3 since_plan=6.0s reason=remaining path valid
+[planner] t=10.2s path=33.28m replans=3 since_plan=7.0s reason=remaining path valid
+[planner] t=11.2s path=33.28m replans=3 since_plan=8.0s reason=remaining path valid
+[planner] t=12.2s path=33.28m replans=3 since_plan=9.0s reason=remaining path valid
+[planner] t=13.2s path=33.28m replans=3 since_plan=10.0s reason=remaining path valid
+[planner] t=14.2s path=33.28m replans=3 since_plan=11.0s reason=remaining path valid
+[planner] t=15.2s path=33.28m replans=3 since_plan=12.0s reason=remaining path valid
+[planner] t=16.2s path=33.28m replans=3 since_plan=13.0s reason=remaining path valid
+[planner] t=17.2s path=33.28m replans=3 since_plan=14.0s reason=remaining path valid
+[planner] t=18.2s path=33.28m replans=3 since_plan=15.0s reason=remaining path valid
+[planner] t=19.2s path=33.28m replans=3 since_plan=16.0s reason=remaining path valid
+[planner] t=20.2s path=33.28m replans=3 since_plan=17.0s reason=remaining path valid
+[planner] t=20.8s path=0.00m replans=3 since_plan=0.0s reason=path blocked ahead
+[planner] t=21.8s path=0.00m replans=3 since_plan=1.0s reason=waiting for route
+[planner] t=22.8s path=0.00m replans=3 since_plan=2.0s reason=waiting for route
+[planner] t=23.8s path=0.00m replans=3 since_plan=3.0s reason=waiting for route
+[planner] t=24.8s path=0.00m replans=3 since_plan=4.0s reason=waiting for route
+[planner] t=25.8s path=0.00m replans=3 since_plan=5.0s reason=waiting for route
+[planner] t=26.8s path=0.00m replans=3 since_plan=6.0s reason=waiting for route
+[planner] t=27.8s path=0.00m replans=3 since_plan=7.0s reason=waiting for route
+[planner] t=28.8s path=7.07m replans=3 since_plan=0.0s reason=map changed after no route
+[planner] t=29.8s path=7.07m replans=3 since_plan=1.0s reason=remaining path valid
+[planner] t=30.8s path=7.07m replans=3 since_plan=2.0s reason=remaining path valid
+[planner] t=31.8s path=7.07m replans=3 since_plan=3.0s reason=remaining path valid
+[planner] t=32.8s path=7.07m replans=3 since_plan=4.0s reason=remaining path valid
+========================================================================
+ RUN SUMMARY   scenario=goal-blocked  noise=off
+========================================================================
+ Result             REACHED THE GOAL in 166 ticks (33.2 s simulated)
+ Distance driven    37.8 m   (straight line start to goal is 36.8 m)
+ Blocked ticks      0
+ Paths published    6   (5 plans, 3 of them replans)
+ Needless replans   0
+ Your node reports  replan_count=3   (the scoreboard counted 3)
+
+ Path events:
+   tick    t(s)  kind       waypoints  length(m)   note
+      0     0.0  initial           53       36.8   
+     14     2.8  replan            50       33.4   
+     15     3.0  replan            51       33.7   
+     16     3.2  replan            51       33.3   
+    104    20.8  stop               0        0.0   
+    144    28.8  recovery          11        7.1   
+
+ World events: tick 104: 'goal blocked' appeared; tick 144: 'goal blocked' cleared

@@ -1,0 +1,49 @@
+[launch] Scenario 'popup': Obstacles appear while the rover is driving: ahead of it, and once, behind it.
+[launch] Sensor: clean   tick = 0.2 s of simulated time
+
+[planner] t=0.0s path=36.77m replans=0 since_plan=0.0s reason=initial plan
+[planner] t=1.0s path=36.77m replans=0 since_plan=1.0s reason=remaining path valid
+[planner] t=2.0s path=36.77m replans=0 since_plan=2.0s reason=remaining path valid
+[planner] t=3.0s path=36.77m replans=0 since_plan=3.0s reason=remaining path valid
+[planner] t=3.4s path=33.28m replans=1 since_plan=0.0s reason=path blocked ahead
+[planner] t=4.4s path=33.28m replans=1 since_plan=1.0s reason=remaining path valid
+[planner] t=5.4s path=33.28m replans=1 since_plan=2.0s reason=remaining path valid
+[planner] t=6.4s path=33.28m replans=1 since_plan=3.0s reason=remaining path valid
+[planner] t=6.6s path=28.04m replans=2 since_plan=0.0s reason=path blocked ahead
+[planner] t=7.6s path=28.04m replans=2 since_plan=1.0s reason=remaining path valid
+[planner] t=8.6s path=28.04m replans=2 since_plan=2.0s reason=remaining path valid
+[planner] t=9.6s path=28.04m replans=2 since_plan=3.0s reason=remaining path valid
+[planner] t=10.6s path=28.04m replans=2 since_plan=4.0s reason=remaining path valid
+[planner] t=11.6s path=28.04m replans=2 since_plan=5.0s reason=remaining path valid
+[planner] t=12.6s path=28.04m replans=2 since_plan=6.0s reason=remaining path valid
+[planner] t=13.6s path=28.04m replans=2 since_plan=7.0s reason=remaining path valid
+[planner] t=14.6s path=28.04m replans=2 since_plan=8.0s reason=remaining path valid
+[planner] t=15.6s path=28.04m replans=2 since_plan=9.0s reason=remaining path valid
+[planner] t=16.6s path=28.04m replans=2 since_plan=10.0s reason=remaining path valid
+[planner] t=17.6s path=28.04m replans=2 since_plan=11.0s reason=remaining path valid
+[planner] t=18.6s path=28.04m replans=2 since_plan=12.0s reason=remaining path valid
+[planner] t=19.2s path=10.45m replans=3 since_plan=0.0s reason=path blocked ahead
+[planner] t=20.2s path=10.45m replans=3 since_plan=1.0s reason=remaining path valid
+[planner] t=21.2s path=10.45m replans=3 since_plan=2.0s reason=remaining path valid
+[planner] t=22.2s path=10.45m replans=3 since_plan=3.0s reason=remaining path valid
+[planner] t=23.2s path=10.45m replans=3 since_plan=4.0s reason=remaining path valid
+[planner] t=24.2s path=10.45m replans=3 since_plan=5.0s reason=remaining path valid
+[planner] t=25.2s path=10.45m replans=3 since_plan=6.0s reason=remaining path valid
+========================================================================
+ RUN SUMMARY   scenario=popup  noise=off
+========================================================================
+ Result             REACHED THE GOAL in 130 ticks (26.0 s simulated)
+ Distance driven    39.0 m   (straight line start to goal is 36.8 m)
+ Blocked ticks      0
+ Paths published    4   (4 plans, 3 of them replans)
+ Needless replans   0
+ Your node reports  replan_count=3   (the scoreboard counted 3)
+
+ Path events:
+   tick    t(s)  kind       waypoints  length(m)   note
+      0     0.0  initial           53       36.8   
+     17     3.4  replan            51       33.3   
+     33     6.6  replan            43       28.0   
+     96    19.2  replan            19       10.4   
+
+ World events: tick 17: 'rock ahead #1' appeared; tick 80: 'rock behind' appeared; tick 96: 'rock ahead #2' appeared
