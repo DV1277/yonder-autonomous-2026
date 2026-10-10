@@ -58,3 +58,9 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 - Rewrote during review: replay generation now refreshes its stopped snapshot on each invocation, using per-run state instead of an existing-file check.
 - Verification: generated 42 frames from the actual goal-blocked simulation with Agg (no window/browser); inspected stopped/final PNGs locally and checked GIF duration/size. Final suite has 56 passing tests. Public publication and applicant review remain pending.
 - Writing passes: read/applied no-ai-slop, its evaluation and humanizer to new technical prose. Kept neutral explanations, explicit provenance and exact measured numbers. Personal voice fidelity cannot pass until the applicant reviews the prose; the draft stays labeled.
+
+## 10. Clean-checkout verification
+
+- Cloned the completed local repository into a temporary directory inside this project, with no hardlinks. Ran the 56-case suite and required all-scenario table successfully from that checkout.
+- Verified all 25 upstream simulator/provided-test files byte-for-byte against upstream commit `f59669408ed754b66b7eb93fb61807cf06c07726`.
+- `results/verification.json` records the actual checkpoint time and elapsed wall-clock interval from local clone-directory creation (8.11 minutes at that checkpoint). This interval describes automated work; it is not the applicant's personal effort or the official 6–8 hour estimate. Applicant review time remains pending.

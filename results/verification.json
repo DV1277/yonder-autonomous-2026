@@ -1,0 +1,13 @@
+{
+  "verified_commit": "14e9dcef0df7f88dbb505bb03891804cd99d926f",
+  "upstream_commit": "f59669408ed754b66b7eb93fb61807cf06c07726",
+  "verified_at_utc": "2026-10-10T01:47:09.726465+00:00",
+  "clone_directory_created_utc": "2026-10-10T01:39:03.424200+00:00",
+  "agent_wall_clock_elapsed_minutes": 8.11,
+  "applicant_review_time": "pending; not measured or claimed",
+  "python": "3.12.1 (v3.12.1:2305ca5144, Dec  7 2023, 17:23:38) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-15.7.7-arm64-arm-64bit",
+  "supplied_files_unchanged": 25,
+  "test_count": 56,
+  "demo_sha256": "6e72390d6440018ccf8c75266333b94b9ff341664e581435f01e1eb059e8717f"
+}
