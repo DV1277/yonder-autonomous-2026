@@ -1,6 +1,6 @@
 # Methodology
 
-Status: AI-assisted implementation and technical documentation prepared by Codex with the applicant's authorization. The applicant must review the code, reproduce the checks and replace or confirm the personal reasoning before submission. The decisions below describe the implementation and measured runs.
+Status: the applicant confirmed their review edits were finished and approved public publication of the AI-assisted project on October 9, 2026. The decisions below describe the implementation and measured runs. The review and assistance record is in `AI_LOG.md`.
 
 ## How to run
 
@@ -40,4 +40,4 @@ The committed pre-run AI hypothesis predicted three boulders replans; the first 
 
 `python3 scripts/experiments.py` records three comparisons without editing production code or the simulator. Removing inflation stalls boulders with 150 blocked ticks. Blocking unknown cells stalls open with no route. On supplied tricky grid 223, Manhattan gives path cost 8.828427 versus octile's 8.242641. The diagnostic changes are process-local and restored afterward.
 
-Part 1 assumes clean sensor observations. Confidence handling, Theta*, soft-cost planning and Webots were not implemented. The shim is not a deployed ROS robot integration. Goal coordinates/grid geometry are fixed by the supplied exercise; changing a goal while an existing path stays valid needs an additional goal-change trigger. Sampling validates the supplied grid-based A* paths, not arbitrary physical motion. Personal explanation and the applicant's own review time remain pending.
+Part 1 assumes clean sensor observations. Confidence handling, Theta*, soft-cost planning and Webots were not implemented. The shim is not a deployed ROS robot integration. Goal coordinates/grid geometry are fixed by the supplied exercise; changing a goal while an existing path stays valid needs an additional goal-change trigger. Sampling validates the supplied grid-based A* paths, not arbitrary physical motion. The applicant reported five hours of their own project work/review for the submission's effort question.

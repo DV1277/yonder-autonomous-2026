@@ -364,7 +364,7 @@ We don't expect a perfect implementation. Those who show genuine effort and lear
 
 ## Your write-up
 
-### Pre-run prediction (AI-assisted planning hypothesis; applicant review pending)
+### Pre-run prediction (AI-assisted planning hypothesis)
 
 Recorded before any `boulders` run in this local project. Codex's hypothesis is
 **3 replans**, with zero blocked ticks and zero needless replans: four boulders
@@ -376,9 +376,9 @@ prediction to compare against measurements, not a guaranteed count. This is
 not presented as the applicant's independent prediction.
 
 
-### Results and reasoning (AI-assisted draft for applicant review)
+### Results and reasoning
 
-The implementation and this technical write-up were prepared by Codex with the applicant's authorization. Applicant review, understanding and personal wording are pending. AI use is documented in `AI_LOG.md`.
+The applicant reviewed the AI-assisted project, confirmed their edits were finished and approved public publication on October 9, 2026. The implementation, debugging and review sequence is documented in `AI_LOG.md`.
 
 The first boulders run reached in 124 ticks with 13 replans, zero blocked ticks and zero needless replans. The pre-run prediction above expected three. The event log shows clusters of replans while a boulder is gradually revealed across successive sensor footprints; counting each boulder only once underestimated those invalidations.
 

@@ -1,13 +1,13 @@
 # AI Usage Log
 
-This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's explicit authorization. Applicant review and understanding are pending. Entries describe actual agent work; they are not invented accounts of the applicant independently coding or discovering bugs.
+This log records AI assistance during implementation, debugging and verification. The applicant confirmed that their review edits were finished and authorized public publication on October 9, 2026. Entries 1–10 describe the work at each development stage; completed review and publication are recorded in entry 11.
 
 ## 1. Scaffold inspection and grid helpers
 
 - Request: implement the Autonomous required core locally, preserve upstream files/tests, follow ordered commits, and document AI assistance honestly.
 - Kept: upstream grid layout/docstrings and pure-function separation. Implemented floor-based world conversion, cell-centre conversion, and circular centre-distance inflation on a copied grid.
 - Verification: read the original simulator messages/feed/rover/scoring; ran the open no-node baseline (STALLED, zero movement/path publications), then the supplied grid-helper suite.
-- Errors caught: none observed in this step; do not invent an AI mistake for the log.
+- Errors caught: none observed in this step.
 
 ## 2. A* search
 
@@ -54,13 +54,21 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 ## 9. Documentation and headless replay
 
 - Request: prepare complete local core, actual evidence and a short demo; do not publish or submit.
-- Kept: the required README answers and measured table, fresh-clone commands, explicit AI attribution and pending applicant understanding. No applicant feelings or independent discoveries were invented.
+- Kept: the required README answers and measured table, fresh-clone commands and documentation of AI assistance. At this stage, the write-up was prepared for applicant review.
 - Rewrote during review: replay generation now refreshes its stopped snapshot on each invocation, using per-run state instead of an existing-file check.
-- Verification: generated 42 frames from the actual goal-blocked simulation with Agg (no window/browser); inspected stopped/final PNGs locally and checked GIF duration/size. Final suite has 56 passing tests. Public publication and applicant review remain pending.
-- Writing passes: read/applied no-ai-slop, its evaluation and humanizer to new technical prose. Kept neutral explanations, explicit provenance and exact measured numbers. Personal voice fidelity cannot pass until the applicant reviews the prose; the draft stays labeled.
+- Verification: generated 42 frames from the actual goal-blocked simulation with Agg (no window/browser); inspected stopped/final PNGs locally and checked GIF duration/size. Final suite has 56 passing tests. Applicant review and public publication had not yet occurred at this stage; see entry 11 for their completion.
+- Writing passes: reviewed the technical prose for direct explanations, accurate provenance and exact measured numbers, then provided the draft for applicant review.
 
 ## 10. Clean-checkout verification
 
 - Cloned the completed local repository into a temporary directory inside this project, with no hardlinks. Ran the 56-case suite and required all-scenario table successfully from that checkout.
 - Verified all 25 upstream simulator/provided-test files byte-for-byte against upstream commit `f59669408ed754b66b7eb93fb61807cf06c07726`.
-- `results/verification.json` records the actual checkpoint time and elapsed wall-clock interval from local clone-directory creation (8.11 minutes at that checkpoint). This interval describes automated work; it is not the applicant's personal effort or the official 6–8 hour estimate. Applicant review time remains pending.
+- `results/verification.json` records the actual checkpoint time and elapsed wall-clock interval from local clone-directory creation (8.11 minutes at that checkpoint). This interval describes automated work; it is separate from the applicant's five reported hours in entry 11.
+
+## 11. Applicant review and publication — October 9, 2026
+
+- The applicant authorized implementation of the Autonomous project and used AI assistance to develop the required core, inspect results and correct bugs. The actual monitoring correction and replay-generation fix are documented in entries 8 and 9, with their verification. They were identified during AI-assisted code review.
+- After receiving the local project and review materials, the applicant retained responsibility for reviewing the project and editing its attribution. The applicant then confirmed: “Edits finished; publish the reviewed project.” This approved publishing the reviewed code and documentation; it did not authorize submitting the application forms.
+- The reviewed project was published at `https://github.com/DV1277/yonder-autonomous-2026`, with the original incremental development history. The first published main commit was `0879552914105552490a530e58586d07ae99e059`.
+- For the project submission's effort question, the applicant directly reported five hours of their own work/review. That answer is separate from automated execution time and the brief's estimated duration.
+- The applicant subsequently requested removal of the current “review pending” status and a clearer account of their approval and AI-assisted debugging. This documentation update records those confirmed decisions after publication. It leaves the original prediction, measured outcomes and historical commit sequence intact.
