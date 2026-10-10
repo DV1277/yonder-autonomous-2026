@@ -1,0 +1,72 @@
+[launch] Scenario 'wall': A long wall across the arena. The only way round is the gap at the top.
+[launch] Sensor: clean   tick = 0.2 s of simulated time
+
+[planner] t=0.0s path=36.77m replans=0 since_plan=0.0s reason=initial plan
+[planner] t=1.0s path=36.77m replans=0 since_plan=1.0s reason=remaining path valid
+[planner] t=2.0s path=36.77m replans=0 since_plan=2.0s reason=remaining path valid
+[planner] t=3.0s path=36.77m replans=0 since_plan=3.0s reason=remaining path valid
+[planner] t=4.0s path=36.77m replans=0 since_plan=4.0s reason=remaining path valid
+[planner] t=5.0s path=36.77m replans=0 since_plan=5.0s reason=remaining path valid
+[planner] t=6.0s path=36.77m replans=0 since_plan=6.0s reason=remaining path valid
+[planner] t=6.6s path=27.16m replans=1 since_plan=0.0s reason=path blocked ahead
+[planner] t=6.8s path=26.75m replans=2 since_plan=0.0s reason=path blocked ahead
+[planner] t=7.0s path=27.33m replans=3 since_plan=0.0s reason=path blocked ahead
+[planner] t=7.2s path=26.92m replans=4 since_plan=0.0s reason=path blocked ahead
+[planner] t=7.4s path=27.21m replans=5 since_plan=0.0s reason=path blocked ahead
+[planner] t=7.8s path=26.80m replans=6 since_plan=0.0s reason=path blocked ahead
+[planner] t=8.0s path=26.38m replans=7 since_plan=0.0s reason=path blocked ahead
+[planner] t=8.2s path=26.68m replans=8 since_plan=0.0s reason=path blocked ahead
+[planner] t=8.4s path=26.26m replans=9 since_plan=0.0s reason=path blocked ahead
+[planner] t=8.6s path=26.56m replans=10 since_plan=0.0s reason=path blocked ahead
+[planner] t=9.0s path=26.14m replans=11 since_plan=0.0s reason=path blocked ahead
+[planner] t=9.4s path=25.73m replans=12 since_plan=0.0s reason=path blocked ahead
+[planner] t=9.8s path=25.31m replans=13 since_plan=0.0s reason=path blocked ahead
+[planner] t=10.0s path=25.61m replans=14 since_plan=0.0s reason=path blocked ahead
+[planner] t=10.4s path=25.19m replans=15 since_plan=0.0s reason=path blocked ahead
+[planner] t=10.8s path=24.78m replans=16 since_plan=0.0s reason=path blocked ahead
+[planner] t=11.2s path=24.57m replans=17 since_plan=0.0s reason=path blocked ahead
+[planner] t=12.2s path=24.57m replans=17 since_plan=1.0s reason=remaining path valid
+[planner] t=13.2s path=24.57m replans=17 since_plan=2.0s reason=remaining path valid
+[planner] t=14.2s path=24.57m replans=17 since_plan=3.0s reason=remaining path valid
+[planner] t=15.2s path=24.57m replans=17 since_plan=4.0s reason=remaining path valid
+[planner] t=16.2s path=24.57m replans=17 since_plan=5.0s reason=remaining path valid
+[planner] t=17.2s path=24.57m replans=17 since_plan=6.0s reason=remaining path valid
+[planner] t=18.2s path=24.57m replans=17 since_plan=7.0s reason=remaining path valid
+[planner] t=19.2s path=24.57m replans=17 since_plan=8.0s reason=remaining path valid
+[planner] t=20.2s path=24.57m replans=17 since_plan=9.0s reason=remaining path valid
+[planner] t=21.2s path=24.57m replans=17 since_plan=10.0s reason=remaining path valid
+[planner] t=22.2s path=24.57m replans=17 since_plan=11.0s reason=remaining path valid
+[planner] t=23.2s path=24.57m replans=17 since_plan=12.0s reason=remaining path valid
+[planner] t=24.2s path=24.57m replans=17 since_plan=13.0s reason=remaining path valid
+[planner] t=25.2s path=24.57m replans=17 since_plan=14.0s reason=remaining path valid
+[planner] t=26.2s path=24.57m replans=17 since_plan=15.0s reason=remaining path valid
+========================================================================
+ RUN SUMMARY   scenario=wall  noise=off
+========================================================================
+ Result             REACHED THE GOAL in 136 ticks (27.2 s simulated)
+ Distance driven    40.8 m   (straight line start to goal is 36.8 m)
+ Blocked ticks      0
+ Paths published    18   (18 plans, 17 of them replans)
+ Needless replans   0
+ Your node reports  replan_count=17   (the scoreboard counted 17)
+
+ Path events:
+   tick    t(s)  kind       waypoints  length(m)   note
+      0     0.0  initial           53       36.8   
+     33     6.6  replan            40       27.2   
+     34     6.8  replan            40       26.7   
+     35     7.0  replan            42       27.3   
+     36     7.2  replan            42       26.9   
+     37     7.4  replan            43       27.2   
+     39     7.8  replan            43       26.8   
+     40     8.0  replan            43       26.4   
+     41     8.2  replan            44       26.7   
+     42     8.4  replan            44       26.3   
+     43     8.6  replan            45       26.6   
+     45     9.0  replan            45       26.1   
+     47     9.4  replan            45       25.7   
+     49     9.8  replan            45       25.3   
+     50    10.0  replan            46       25.6   
+     52    10.4  replan            46       25.2   
+     54    10.8  replan            46       24.8   
+     56    11.2  replan            46       24.6   

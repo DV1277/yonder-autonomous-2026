@@ -1,0 +1,63 @@
+[launch] Scenario 'boulders': Static boulders. Several sit on the direct route, and none are known at the start.
+[launch] Sensor: clean   tick = 0.2 s of simulated time
+
+[planner] t=0.0s path=37.65m replans=0 since_plan=0.0s reason=initial plan
+[planner] t=0.2s path=37.23m replans=1 since_plan=0.0s reason=path blocked ahead
+[planner] t=0.4s path=37.53m replans=2 since_plan=0.0s reason=path blocked ahead
+[planner] t=1.4s path=37.53m replans=2 since_plan=1.0s reason=remaining path valid
+[planner] t=2.4s path=37.53m replans=2 since_plan=2.0s reason=remaining path valid
+[planner] t=3.4s path=37.53m replans=2 since_plan=3.0s reason=remaining path valid
+[planner] t=4.0s path=31.87m replans=3 since_plan=0.0s reason=path blocked ahead
+[planner] t=4.2s path=31.37m replans=4 since_plan=0.0s reason=path blocked ahead
+[planner] t=4.4s path=30.87m replans=5 since_plan=0.0s reason=path blocked ahead
+[planner] t=4.6s path=30.66m replans=6 since_plan=0.0s reason=path blocked ahead
+[planner] t=5.6s path=30.66m replans=6 since_plan=1.0s reason=remaining path valid
+[planner] t=6.6s path=30.66m replans=6 since_plan=2.0s reason=remaining path valid
+[planner] t=7.6s path=30.66m replans=6 since_plan=3.0s reason=remaining path valid
+[planner] t=8.6s path=30.66m replans=6 since_plan=4.0s reason=remaining path valid
+[planner] t=9.4s path=23.30m replans=7 since_plan=0.0s reason=path blocked ahead
+[planner] t=9.6s path=22.80m replans=8 since_plan=0.0s reason=path blocked ahead
+[planner] t=9.8s path=22.80m replans=9 since_plan=0.0s reason=path blocked ahead
+[planner] t=10.8s path=22.80m replans=9 since_plan=1.0s reason=remaining path valid
+[planner] t=11.8s path=22.80m replans=9 since_plan=2.0s reason=remaining path valid
+[planner] t=12.8s path=22.80m replans=9 since_plan=3.0s reason=remaining path valid
+[planner] t=13.8s path=22.80m replans=9 since_plan=4.0s reason=remaining path valid
+[planner] t=14.4s path=15.94m replans=10 since_plan=0.0s reason=path blocked ahead
+[planner] t=14.6s path=15.23m replans=11 since_plan=0.0s reason=path blocked ahead
+[planner] t=14.8s path=15.52m replans=12 since_plan=0.0s reason=path blocked ahead
+[planner] t=15.0s path=15.11m replans=13 since_plan=0.0s reason=path blocked ahead
+[planner] t=16.0s path=15.11m replans=13 since_plan=1.0s reason=remaining path valid
+[planner] t=17.0s path=15.11m replans=13 since_plan=2.0s reason=remaining path valid
+[planner] t=18.0s path=15.11m replans=13 since_plan=3.0s reason=remaining path valid
+[planner] t=19.0s path=15.11m replans=13 since_plan=4.0s reason=remaining path valid
+[planner] t=20.0s path=15.11m replans=13 since_plan=5.0s reason=remaining path valid
+[planner] t=21.0s path=15.11m replans=13 since_plan=6.0s reason=remaining path valid
+[planner] t=22.0s path=15.11m replans=13 since_plan=7.0s reason=remaining path valid
+[planner] t=23.0s path=15.11m replans=13 since_plan=8.0s reason=remaining path valid
+[planner] t=24.0s path=15.11m replans=13 since_plan=9.0s reason=remaining path valid
+========================================================================
+ RUN SUMMARY   scenario=boulders  noise=off
+========================================================================
+ Result             REACHED THE GOAL in 124 ticks (24.8 s simulated)
+ Distance driven    37.2 m   (straight line start to goal is 36.8 m)
+ Blocked ticks      0
+ Paths published    14   (14 plans, 13 of them replans)
+ Needless replans   0
+ Your node reports  replan_count=13   (the scoreboard counted 13)
+
+ Path events:
+   tick    t(s)  kind       waypoints  length(m)   note
+      0     0.0  initial           56       37.6   
+      1     0.2  replan            56       37.2   
+      2     0.4  replan            57       37.5   
+     20     4.0  replan            49       31.9   
+     21     4.2  replan            48       31.4   
+     22     4.4  replan            47       30.9   
+     23     4.6  replan            47       30.7   
+     47     9.4  replan            36       23.3   
+     48     9.6  replan            35       22.8   
+     49     9.8  replan            35       22.8   
+     72    14.4  replan            25       15.9   
+     73    14.6  replan            24       15.2   
+     74    14.8  replan            25       15.5   
+     75    15.0  replan            25       15.1   

@@ -26,3 +26,11 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 - Kept: BEST_EFFORT/VOLATILE sensor subscription, reliable path publication, unknown-as-traversable exploration, explicit arena-wall clearance, simulation-stamp monitoring.
 - Verification: required open scenario with one initial plan, no replan and no blocked ticks. No boulders scenario has run at this stage.
 - Current staged limitation: this commit plans once only; map-change replanning follows in step 6.
+
+## 5. Prediction and selective replanning
+
+- The required standalone `prediction: boulders` README commit was made before the first boulders execution. It explicitly attributes the three-replan hypothesis to AI assistance; it is not fabricated applicant testimony.
+- Kept: validate only the remaining path (nearest waypoint minus one for current segment coverage); recompute after invalidation; publish an explicit empty stop if no route; retry failed search only after occupancy changes; suppress duplicate empty publications.
+- Verification: first boulders and wall runs are recorded in `results/step6-*.txt`; compare actual scoreboard to the pre-run hypothesis.
+
+- Actual first boulders result: goal reached in 124 ticks, 13 replans, 0 blocked, 0 needless. The three-replan hypothesis was wrong: successive partial observations of each boulder caused multiple legitimate invalidations. Wall also reached the goal with 0 blocked and 0 needless (17 replans). No result was retroactively relabeled as a prediction.

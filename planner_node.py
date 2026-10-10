@@ -85,7 +85,15 @@ class PlannerNode(Node):
         self.print_status(msg.header.stamp)
 
     def needs_replan(self, grid: Grid, rover_xy) -> tuple:
-        return self.path_xy is None, "initial plan"
+        if self.path_xy is None:
+            return True, "initial plan"
+        if not self.path_xy:
+            changed = tuple(grid.occupancy) != self.failed_map
+            return changed, "map changed after no route" if changed else "waiting for route"
+        index = max(0, next_waypoint_index(self.path_xy, rover_xy) - 1)
+        if not path_is_valid(grid, self.path_xy, index):
+            return True, "path blocked ahead"
+        return False, "remaining path valid"
 
     def plan(self, grid: Grid, rover_xy, goal_xy):
         cells = astar(grid, grid.world_to_cell(*rover_xy),
