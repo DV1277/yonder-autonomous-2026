@@ -14,7 +14,12 @@ Movement rules (fixed, so the tests can check them)
 * Cells outside the grid don't exist.
 """
 
+import heapq
+import math
+from itertools import count
 from typing import List, Optional
+
+from sim.grid_values import OCCUPIED, UNKNOWN
 
 from grid_utils import Grid, Cell
 
@@ -30,8 +35,8 @@ def heuristic(a: Cell, b: Cell) -> float:
     checks this, and it is worth understanding why some very common heuristics
     fail it on an 8-connected grid.
     """
-    # TODO: implement
-    raise NotImplementedError("heuristic")
+    dr, dc = abs(a[0] - b[0]), abs(a[1] - b[1])
+    return max(dr, dc) + (math.sqrt(2.0) - 1.0) * min(dr, dc)
 
 
 def astar(grid: Grid, start: Cell, goal: Cell, unknown_is_free: bool = False) -> Optional[List[Cell]]:
@@ -57,5 +62,42 @@ def astar(grid: Grid, start: Cell, goal: Cell, unknown_is_free: bool = False) ->
       * Speed: a 100 x 100 grid must finish in well under a second. What data
         structure makes "give me the cheapest open node" fast?
     """
-    # TODO: implement
-    raise NotImplementedError("astar")
+    def passable(cell):
+        return (grid.in_bounds(*cell) and grid.get(*cell) != OCCUPIED
+                and (unknown_is_free or grid.get(*cell) != UNKNOWN))
+
+    if not grid.in_bounds(*start) or not grid.in_bounds(*goal):
+        return None
+    if start == goal:
+        return [start]
+    if not passable(goal):
+        return None
+    sequence = count()
+    frontier = [(heuristic(start, goal), next(sequence), 0.0, start)]
+    best = {start: 0.0}
+    parent = {}
+    while frontier:
+        _, _, cost, cell = heapq.heappop(frontier)
+        if cost > best.get(cell, math.inf):
+            continue
+        if cell == goal:
+            path = [goal]
+            while path[-1] != start:
+                path.append(parent[path[-1]])
+            return path[::-1]
+        r, c = cell
+        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1),
+                       (1, 1), (1, -1), (-1, 1), (-1, -1)):
+            neighbor = r + dr, c + dc
+            if not passable(neighbor):
+                continue
+            if dr and dc and (not passable((r + dr, c))
+                              or not passable((r, c + dc))):
+                continue
+            candidate = cost + (math.sqrt(2.0) if dr and dc else 1.0)
+            if candidate + 1e-12 < best.get(neighbor, math.inf):
+                best[neighbor] = candidate
+                parent[neighbor] = cell
+                heapq.heappush(frontier, (candidate + heuristic(neighbor, goal),
+                                         next(sequence), candidate, neighbor))
+    return None
