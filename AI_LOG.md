@@ -39,3 +39,8 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 
 - Verification: popup reaches in 130 ticks with 3 replans; its behind-rover event at tick 80 produces no path event. Goal-blocked reaches in 166 ticks; empty stop at 104, recovery at 144, 0 blocked/needless in both runs.
 - Kept: empty-publication suppression and occupancy-change recovery worked without modification. No simulated success was invented and no supplied tests/worlds were edited.
+
+## 7. Scenario generalization
+
+- Verification: all eight required table rows reached with 0 blocked and 0 needless. New seeds 7, 19, 42, 101 and 223 also reached, with 0 blocked/needless; full actual outputs are retained under `results/`.
+- Kept: no seed-specific tuning or scenario-name branching. The planner imports no ground truth.

@@ -1,0 +1,55 @@
+[launch] Scenario 'random(seed=19)': Generated world: boulders, walls with gaps, and pop-up obstacles.
+[launch] Sensor: clean   tick = 0.2 s of simulated time
+
+[planner] t=0.0s path=36.77m replans=0 since_plan=0.0s reason=initial plan
+[planner] t=1.0s path=36.77m replans=0 since_plan=1.0s reason=remaining path valid
+[planner] t=2.0s path=36.77m replans=0 since_plan=2.0s reason=remaining path valid
+[planner] t=3.0s path=36.77m replans=0 since_plan=3.0s reason=remaining path valid
+[planner] t=4.0s path=36.77m replans=0 since_plan=4.0s reason=remaining path valid
+[planner] t=4.4s path=31.58m replans=1 since_plan=0.0s reason=path blocked ahead
+[planner] t=5.4s path=31.58m replans=1 since_plan=1.0s reason=remaining path valid
+[planner] t=6.4s path=31.58m replans=1 since_plan=2.0s reason=remaining path valid
+[planner] t=7.4s path=31.58m replans=1 since_plan=3.0s reason=remaining path valid
+[planner] t=7.8s path=27.51m replans=2 since_plan=0.0s reason=path blocked ahead
+[planner] t=8.8s path=27.51m replans=2 since_plan=1.0s reason=remaining path valid
+[planner] t=9.8s path=27.51m replans=2 since_plan=2.0s reason=remaining path valid
+[planner] t=10.8s path=27.51m replans=2 since_plan=3.0s reason=remaining path valid
+[planner] t=11.8s path=27.51m replans=2 since_plan=4.0s reason=remaining path valid
+[planner] t=12.8s path=27.51m replans=2 since_plan=5.0s reason=remaining path valid
+[planner] t=13.8s path=27.51m replans=2 since_plan=6.0s reason=remaining path valid
+[planner] t=14.8s path=27.51m replans=2 since_plan=7.0s reason=remaining path valid
+[planner] t=15.8s path=27.51m replans=2 since_plan=8.0s reason=remaining path valid
+[planner] t=16.2s path=14.94m replans=3 since_plan=0.0s reason=path blocked ahead
+[planner] t=16.8s path=15.11m replans=4 since_plan=0.0s reason=path blocked ahead
+[planner] t=17.2s path=14.69m replans=5 since_plan=0.0s reason=path blocked ahead
+[planner] t=17.4s path=14.28m replans=6 since_plan=0.0s reason=path blocked ahead
+[planner] t=18.4s path=14.28m replans=6 since_plan=1.0s reason=remaining path valid
+[planner] t=19.4s path=14.28m replans=6 since_plan=2.0s reason=remaining path valid
+[planner] t=20.4s path=14.28m replans=6 since_plan=3.0s reason=remaining path valid
+[planner] t=21.4s path=14.28m replans=6 since_plan=4.0s reason=remaining path valid
+[planner] t=22.4s path=14.28m replans=6 since_plan=5.0s reason=remaining path valid
+[planner] t=23.4s path=14.28m replans=6 since_plan=6.0s reason=remaining path valid
+[planner] t=24.4s path=14.28m replans=6 since_plan=7.0s reason=remaining path valid
+[planner] t=25.4s path=14.28m replans=6 since_plan=8.0s reason=remaining path valid
+[planner] t=26.4s path=14.28m replans=6 since_plan=9.0s reason=remaining path valid
+========================================================================
+ RUN SUMMARY   scenario=random(seed=19)  noise=off
+========================================================================
+ Result             REACHED THE GOAL in 134 ticks (26.8 s simulated)
+ Distance driven    40.2 m   (straight line start to goal is 36.8 m)
+ Blocked ticks      0
+ Paths published    7   (7 plans, 6 of them replans)
+ Needless replans   0
+ Your node reports  replan_count=6   (the scoreboard counted 6)
+
+ Path events:
+   tick    t(s)  kind       waypoints  length(m)   note
+      0     0.0  initial           53       36.8   
+     22     4.4  replan            48       31.6   
+     39     7.8  replan            44       27.5   
+     81    16.2  replan            23       14.9   
+     84    16.8  replan            25       15.1   
+     86    17.2  replan            25       14.7   
+     87    17.4  replan            25       14.3   
+
+ World events: tick 22: 'rock ahead #2' appeared; tick 39: 'rock ahead #1' appeared; tick 43: 'rock behind' appeared
