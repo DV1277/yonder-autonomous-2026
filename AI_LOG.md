@@ -1,24 +1,10 @@
 # AI Usage Log
 
-Replace this template with your own entries. Add one entry per significant use of an AI tool.
+This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's explicit authorization. Applicant review and understanding are pending. Entries describe actual agent work; they are not invented accounts of the applicant independently coding or discovering bugs.
 
-## 1. <short title of what you used it for>
+## 1. Scaffold inspection and grid helpers
 
-**What I asked:**
-
-**What I kept vs. rewrote, and why:**
-
-**What the AI got wrong that I had to catch:**
-
-**How I verified it ran correctly (not just that it compiled):**
-*(Which test, scenario, or picture showed you the problem? Paste the failing line or the before/after numbers.)*
-
-## 2. <next use>
-
-**What I asked:**
-
-**What I kept vs. rewrote, and why:**
-
-**What the AI got wrong that I had to catch:**
-
-**How I verified it ran correctly (not just that it compiled):**
+- Request: implement the Autonomous required core locally, preserve upstream files/tests, follow ordered commits, and document AI assistance honestly.
+- Kept: upstream grid layout/docstrings and pure-function separation. Implemented floor-based world conversion, cell-centre conversion, and circular centre-distance inflation on a copied grid.
+- Verification: read the original simulator messages/feed/rover/scoring; ran the open no-node baseline (STALLED, zero movement/path publications), then the supplied grid-helper suite.
+- Errors caught: none observed in this step; do not invent an AI mistake for the log.
