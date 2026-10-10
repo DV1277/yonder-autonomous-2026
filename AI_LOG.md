@@ -14,3 +14,9 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 - Kept: heap frontier, octile heuristic, eight-connected moves, explicit no-corner-cut checks, permissive blocked start but blocked goal rejection.
 - Verification: supplied search suite checks optimality, unknown-cell policy, corner cutting, blocked-start escape and 150×150 performance.
 - Errors caught: none in this step. The overestimating-heuristic comparison is reserved for a separately labeled diagnostic, not production code.
+
+## 3. Replan helpers
+
+- Kept: nearest waypoint with stable lower-index ties, world-coordinate path validation, and segment/corner checks beyond endpoint checks.
+- Verification: supplied replan suite; later separate added regression tests cover newly blocked diagonal sides and obstacles between distant endpoints.
+- Errors caught: none observed in this step; stronger segment validation is an intentional safety choice.
