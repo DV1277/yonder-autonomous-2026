@@ -1,0 +1,20 @@
+========================================================================
+ RUN SUMMARY   scenario=goal-blocked  noise=off
+========================================================================
+ Result             REACHED THE GOAL in 166 ticks (33.2 s simulated)
+ Distance driven    37.8 m   (straight line start to goal is 36.8 m)
+ Blocked ticks      0
+ Paths published    6   (5 plans, 3 of them replans)
+ Needless replans   0
+ Your node reports  replan_count=3   (the scoreboard counted 3)
+
+ Path events:
+   tick    t(s)  kind       waypoints  length(m)   note
+      0     0.0  initial           53       36.8   
+     14     2.8  replan            50       33.4   
+     15     3.0  replan            51       33.7   
+     16     3.2  replan            51       33.3   
+    104    20.8  stop               0        0.0   
+    144    28.8  recovery          11        7.1   
+
+ World events: tick 104: 'goal blocked' appeared; tick 144: 'goal blocked' cleared

@@ -376,18 +376,42 @@ prediction to compare against measurements, not a guaranteed count. This is
 not presented as the applicant's independent prediction.
 
 
-*Candidates: replace this section with your own short write-up. Keep it to what a teammate would need to trust your implementation. Numbers from your own runs beat adjectives.*
+### Results and reasoning (AI-assisted draft for applicant review)
 
-- **Prediction.** Before running `boulders`: how many replans did you expect, and why? What did you get?
-- **Heuristic.** Which one, and why is it safe for an 8-connected grid? What goes wrong with one that overestimates? (Try it. What did you see?)
-- **Replan trigger.** Exactly what makes you replan? What deliberately does *not*? Paste your `python sim/launch.py --all` table.
-- **Unknown cells.** How does your planner treat them, and why? What happens on the very first tick under the other choice?
-- **Rover size.** How do you account for it? What happens to the run if you don't?
-- **No route.** What do you publish when there is no path, and what would go wrong if you published nothing?
-- **Time.** Which clock does your monitoring output use, and why?
-- **Ambiguity.** What did the task leave underspecified, and what call did you make?
-- **Testing.** What did you check beyond the provided tests? Which scenario or picture revealed a bug of yours?
-- **Stretch goals.** Which did you attempt, and how far did you get? (For Part 2A: what changed between your Part 1 planner and your final one, in numbers?)
+The implementation and this technical write-up were prepared by Codex with the applicant's authorization. Applicant review, understanding and personal wording are pending. AI use is documented in `AI_LOG.md`.
+
+The first boulders run reached in 124 ticks with 13 replans, zero blocked ticks and zero needless replans. The pre-run prediction above expected three. The event log shows clusters of replans while a boulder is gradually revealed across successive sensor footprints; counting each boulder only once underestimated those invalidations.
+
+Octile distance is the heuristic: diagonal moves cost √2 and straight moves cost 1. On an empty eight-connected grid it is exact, and obstacles cannot shorten the route. The required comparison in `results/diagnostic-comparisons.json` shows Manhattan produced 8.828427 instead of the shortest 8.242641 on supplied tricky grid 223.
+
+Only an invalid remaining path triggers a replacement. The validator starts one waypoint before the nearest waypoint so it includes the current segment; it checks segment crossings and diagonal sides as well as endpoints. The popup obstacle behind the rover appears at tick 80, with no path event then. The measured all-scenario table is:
+
+```text
+scenario      result           ticks  blocked  plans  replans  needless
+-----------------------------------------------------------------------
+open          REACHED            121        0      1        0         0
+boulders      REACHED            124        0     14       13         0
+wall          REACHED            136        0     18       17         0
+popup         REACHED            130        0      4        3         0
+goal-blocked  REACHED            166        0      5        3         0
+random 1      REACHED            137        0     14       13         0
+random 2      REACHED            131        0     17       16         0
+random 3      REACHED            136        0     11       10         0
+```
+
+Additional seeds 7, 19, 42, 101 and 223 all reached with zero blocked/needless. Full logs are in `results/`. Unknown cells are traversable; treating them as blocked leaves the initial unseen goal unreachable and stalls open on the first plan. Obstacle inflation plus arena-edge clearance accounts for rover size. Removing obstacle inflation in the diagnostic stalls boulders with 150 emergency-stop ticks.
+
+When no route exists, the node publishes an empty path to stop the rover. Publishing nothing would leave the previous path active. In goal-blocked, the stop occurs at tick 104 and recovery at tick 144 after the goal clears. Monitoring uses message simulation time, because a headless run progresses much faster than the wall clock.
+
+The exercise leaves unknown-space policy, inflation shape, retry timing and safety coverage of path segments to the implementation. The code uses circular inflation, retries a failed search after occupancy changes, and bounds validation to the suffix. Seven separate regressions check diagonal side obstacles, obstacles between endpoints, unknown policy, behind-rover changes, changed-map retry, one stop/recovery and a single plan throughout open.
+
+Code review caught one monitoring error: the first implementation reset the time on every publication, including stops/recoveries. A separate fix commit updates the replan timestamp only when a nonempty plan replaces another nonempty plan. No supplied simulator or test was altered. No stretch goal is claimed; this is the clean-sensor required core.
+
+### Short demo
+
+![Actual goal-blocked simulation replay](demo/autonomous-demo.gif)
+
+The 8.4-second GIF shows actual simulated movement, empty-path stop while the goal is blocked, and recovery after it clears. It plays at 4× simulation speed. `demo/frames.json` and `demo/summary.txt` retain the measured frame/result data. Regenerate it headlessly with `scripts/generate_demo.py`; see `METHODOLOGY.md` for exact commands.
 
 ---
 

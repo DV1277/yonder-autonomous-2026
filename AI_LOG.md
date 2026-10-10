@@ -50,3 +50,11 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 - Error caught in agent code review: `last_replan_stamp` was updated on initial, stop and recovery publications, so monitoring showed age since any plan rather than since an actual replan. The functional scoreboard counts were correct.
 - Rewrote: update the replan timestamp only for a nonempty path replacing another nonempty path; label output `since_replan`. Initial output now says `never`.
 - Verification: original plus added regressions rerun after the correction; scenario outcomes are unaffected because this changes monitoring state only.
+
+## 9. Documentation and headless replay
+
+- Request: prepare complete local core, actual evidence and a short demo; do not publish or submit.
+- Kept: the required README answers and measured table, fresh-clone commands, explicit AI attribution and pending applicant understanding. No applicant feelings or independent discoveries were invented.
+- Rewrote during review: replay generation now refreshes its stopped snapshot on each invocation, using per-run state instead of an existing-file check.
+- Verification: generated 42 frames from the actual goal-blocked simulation with Agg (no window/browser); inspected stopped/final PNGs locally and checked GIF duration/size. Final suite has 56 passing tests. Public publication and applicant review remain pending.
+- Writing passes: read/applied no-ai-slop, its evaluation and humanizer to new technical prose. Kept neutral explanations, explicit provenance and exact measured numbers. Personal voice fidelity cannot pass until the applicant reviews the prose; the draft stays labeled.
