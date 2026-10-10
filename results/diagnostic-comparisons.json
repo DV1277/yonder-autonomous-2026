@@ -1,0 +1,35 @@
+[
+  {
+    "label": "core",
+    "scenario": "boulders",
+    "result": "REACHED",
+    "ticks": 124,
+    "blocked": 0,
+    "replans": 13,
+    "needless": 0
+  },
+  {
+    "label": "without obstacle inflation",
+    "scenario": "boulders",
+    "result": "STALLED",
+    "ticks": 172,
+    "blocked": 150,
+    "replans": 3,
+    "needless": 0
+  },
+  {
+    "label": "unknown cells blocked",
+    "scenario": "open",
+    "result": "STALLED",
+    "ticks": 150,
+    "blocked": 0,
+    "replans": 0,
+    "needless": 0
+  },
+  {
+    "label": "heuristic comparison on supplied tricky grid 223",
+    "octile_cost": 8.242640687119286,
+    "manhattan_cost": 8.82842712474619,
+    "note": "Manhattan overestimates diagonal travel; production retains octile."
+  }
+]

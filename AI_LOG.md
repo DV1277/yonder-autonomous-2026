@@ -44,3 +44,9 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 
 - Verification: all eight required table rows reached with 0 blocked and 0 needless. New seeds 7, 19, 42, 101 and 223 also reached, with 0 blocked/needless; full actual outputs are retained under `results/`.
 - Kept: no seed-specific tuning or scenario-name branching. The planner imports no ground truth.
+
+## 8. Monitoring correction during review
+
+- Error caught in agent code review: `last_replan_stamp` was updated on initial, stop and recovery publications, so monitoring showed age since any plan rather than since an actual replan. The functional scoreboard counts were correct.
+- Rewrote: update the replan timestamp only for a nonempty path replacing another nonempty path; label output `since_replan`. Initial output now says `never`.
+- Verification: original plus added regressions rerun after the correction; scenario outcomes are unaffected because this changes monitoring state only.

@@ -79,7 +79,7 @@ class PlannerNode(Node):
                 self.plan_count += 1
                 if previous and self.path_xy:
                     self.replan_count += 1
-                self.last_replan_stamp = msg.header.stamp
+                    self.last_replan_stamp = msg.header.stamp
                 self.last_status_stamp = None
             self.failed_map = tuple(grid.occupancy) if not self.path_xy else None
         self.print_status(msg.header.stamp)
@@ -108,5 +108,5 @@ class PlannerNode(Node):
             return
         age = "never" if self.last_replan_stamp is None else f"{stamp - self.last_replan_stamp:.1f}s"
         print(f"[planner] t={stamp:.1f}s path={path_length_m(self.path_xy or []):.2f}m "
-              f"replans={self.replan_count} since_plan={age} reason={self.reason}")
+              f"replans={self.replan_count} since_replan={age} reason={self.reason}")
         self.last_status_stamp = stamp
