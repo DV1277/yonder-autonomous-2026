@@ -43,122 +43,62 @@ from replan import next_waypoint_index, path_is_valid
 
 
 class PlannerNode(Node):
-    """
-    Plans a path from the rover to the goal and keeps it up to date as the map changes.
-
-    Subscribes:
-        /grid_feed     (sim.messages.GridSnapshot)   5 Hz, BEST_EFFORT
-                       occupancy grid + rover position + goal, all in one message
-
-    Publishes:
-        /planned_path  (nav_msgs/Path)               only when the plan changes
-                       waypoints in WORLD coordinates; an EMPTY path means "stop"
-    """
+    """ROS-style glue around pure planning helpers; Part 1 clean sensor policy."""
 
     def __init__(self):
         super().__init__("planner_node")
-
-        # ------------------------------------------------------------------
-        # Subscriber
-        # ------------------------------------------------------------------
-        # TODO: Create a subscription to /grid_feed that calls self.on_grid.
-        #
-        # IMPORTANT: check the QoS the feed publishes with (see
-        # sim/grid_feed_publisher.py). If your subscription asks for more than
-        # the publisher offers, ROS connects nothing and you receive nothing.
-        # The sim prints a warning when this happens — read the terminal output.
-        #
-        # self.grid_sub = self.create_subscription(
-        #     GridSnapshot, "/grid_feed", self.on_grid, ???
-        # )
-
-        # ------------------------------------------------------------------
-        # Publisher
-        # ------------------------------------------------------------------
-        # TODO: Create a publisher for /planned_path (message type: Path).
-        #
-        # self.path_pub = self.create_publisher(Path, "/planned_path", 10)
-
-        # ------------------------------------------------------------------
-        # State — add whatever you need
-        # ------------------------------------------------------------------
-        self.path_xy = None          # current plan: list of (x, y) WORLD points. None = never planned.
-        self.plan_count = 0          # how many plans you have published (initial one included)
-        self.replan_count = 0        # how many of those replaced an existing plan
-        self.last_replan_stamp = None  # sim time of the most recent replan, or None
-
-    # -----------------------------------------------------------------------
-    # The callback: runs once per tick
-    # -----------------------------------------------------------------------
+        qos = QoSProfile(reliability=ReliabilityPolicy.BEST_EFFORT,
+                         durability=DurabilityPolicy.VOLATILE, depth=1)
+        self.grid_sub = self.create_subscription(GridSnapshot, "/grid_feed", self.on_grid, qos)
+        self.path_pub = self.create_publisher(Path, "/planned_path", 10)
+        self.path_xy = None
+        self.plan_count = 0
+        self.replan_count = 0
+        self.last_replan_stamp = None
+        self.last_status_stamp = None
+        self.failed_map = None
+        self.reason = "initial"
 
     def on_grid(self, msg: GridSnapshot) -> None:
-        """
-        Called every tick (5 Hz of SIMULATED time) with the rover's latest view.
-
-        Your job on each call:
-          1. Turn the message into a Grid (Grid.from_msg) and make it safe for a
-             rover with a body (inflate by msg.robot_radius_m).
-          2. Work out where the rover and the goal are in the grid.
-          3. Decide: is the current plan still good?  (self.needs_replan)
-          4. Only if it isn't: plan again (self.plan), publish it (self.publish_path),
-             and update your counters.
-          5. Print monitoring output (self.print_status).
-
-        Step 3 is the heart of the task: replan when the plan is invalidated,
-        and not otherwise. The scoreboard tells you how you did.
-        """
-        # TODO: implement
-        raise NotImplementedError("PlannerNode.on_grid")
+        grid = inflate(Grid.from_msg(msg), msg.robot_radius_m)
+        # Walls are not marked by the feed. Enforce body clearance at arena edges.
+        for row in range(grid.height):
+            for col in range(grid.width):
+                clearance = min(row + 0.5, col + 0.5,
+                                grid.height - row - 0.5, grid.width - col - 0.5) * grid.resolution
+                if clearance < msg.robot_radius_m:
+                    grid.occupancy[grid.index(row, col)] = 100
+        rover_xy = msg.rover_x, msg.rover_y
+        goal_xy = msg.goal_x, msg.goal_y
+        needed, self.reason = self.needs_replan(grid, rover_xy)
+        if needed:
+            previous = self.path_xy
+            self.path_xy = self.plan(grid, rover_xy, goal_xy)
+            if previous is None or self.path_xy != previous:
+                self.publish_path(self.path_xy, msg.header.stamp)
+                self.plan_count += 1
+                if previous and self.path_xy:
+                    self.replan_count += 1
+                self.last_replan_stamp = msg.header.stamp
+                self.last_status_stamp = None
+            self.failed_map = tuple(grid.occupancy) if not self.path_xy else None
+        self.print_status(msg.header.stamp)
 
     def needs_replan(self, grid: Grid, rover_xy) -> tuple:
-        """
-        Should we compute a new plan right now?  Returns (bool, reason_string).
-
-        `grid` is the current (already inflated) grid. `rover_xy` is where the rover is now.
-
-        Think about every situation in which the answer should be True:
-          * you have never planned
-          * the last plan found no route (was it worth trying again? when?)
-          * the plan is no longer safe
-        and the situations in which it should be False, even though the map changed:
-          * something changed, but not anywhere near the part of the path still ahead
-
-        Return a short reason like "path blocked ahead" — it goes in your monitoring
-        output and makes debugging a hundred times easier.
-        """
-        # TODO: implement
-        raise NotImplementedError("PlannerNode.needs_replan")
+        return self.path_xy is None, "initial plan"
 
     def plan(self, grid: Grid, rover_xy, goal_xy):
-        """
-        Run the search and return the result as a list of (x, y) WORLD points
-        (first = the rover's cell, last = the goal's cell), or [] if there is no route.
-
-        Convert world -> cell, call astar, convert the cells back to world points.
-        """
-        # TODO: implement
-        raise NotImplementedError("PlannerNode.plan")
+        cells = astar(grid, grid.world_to_cell(*rover_xy),
+                      grid.world_to_cell(*goal_xy), unknown_is_free=True)
+        return [] if cells is None else [grid.cell_to_world(*cell) for cell in cells]
 
     def publish_path(self, points_xy, stamp: float) -> None:
-        """Publish a list of (x, y) world points as nav_msgs/Path. (provided)"""
         self.path_pub.publish(make_path_msg(points_xy, stamp))
 
-    # -----------------------------------------------------------------------
-    # Monitoring
-    # -----------------------------------------------------------------------
-
     def print_status(self, stamp: float) -> None:
-        """
-        Print a monitoring line to the terminal. Not every tick — about once per
-        second of simulated time is plenty, plus a line whenever you (re)plan.
-
-        Must show:
-          * current path length (metres)
-          * number of replans triggered so far
-          * time since the last replan
-
-        `stamp` is SIMULATION time in seconds (msg.header.stamp). The sim can run
-        much faster than real time, so time.time() would give nonsense here.
-        """
-        # TODO: implement
-        raise NotImplementedError("PlannerNode.print_status")
+        if self.last_status_stamp is not None and stamp - self.last_status_stamp < 1.0 - 1e-9:
+            return
+        age = "never" if self.last_replan_stamp is None else f"{stamp - self.last_replan_stamp:.1f}s"
+        print(f"[planner] t={stamp:.1f}s path={path_length_m(self.path_xy or []):.2f}m "
+              f"replans={self.replan_count} since_plan={age} reason={self.reason}")
+        self.last_status_stamp = stamp

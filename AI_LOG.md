@@ -20,3 +20,9 @@ This project is being implemented by Codex (GPT-6.1 Sol), with the applicant's e
 - Kept: nearest waypoint with stable lower-index ties, world-coordinate path validation, and segment/corner checks beyond endpoint checks.
 - Verification: supplied replan suite; later separate added regression tests cover newly blocked diagonal sides and obstacles between distant endpoints.
 - Errors caught: none observed in this step; stronger segment validation is an intentional safety choice.
+
+## 4. Plan-once node wiring
+
+- Kept: BEST_EFFORT/VOLATILE sensor subscription, reliable path publication, unknown-as-traversable exploration, explicit arena-wall clearance, simulation-stamp monitoring.
+- Verification: required open scenario with one initial plan, no replan and no blocked ticks. No boulders scenario has run at this stage.
+- Current staged limitation: this commit plans once only; map-change replanning follows in step 6.
