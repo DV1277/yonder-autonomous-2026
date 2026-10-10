@@ -364,6 +364,18 @@ We don't expect a perfect implementation. Those who show genuine effort and lear
 
 ## Your write-up
 
+### Pre-run prediction (AI-assisted planning hypothesis; applicant review pending)
+
+Recorded before any `boulders` run in this local project. Codex's hypothesis is
+**3 replans**, with zero blocked ticks and zero needless replans: four boulders
+sit along the route, the nearest may already be partially visible within the
+initial 8 m sensor footprint, and the remaining three may invalidate the path
+as the rover approaches. A detour may avoid a later boulder entirely, or partial
+visibility may expose another part of the same boulder later, so this is a
+prediction to compare against measurements, not a guaranteed count. This is
+not presented as the applicant's independent prediction.
+
+
 *Candidates: replace this section with your own short write-up. Keep it to what a teammate would need to trust your implementation. Numbers from your own runs beat adjectives.*
 
 - **Prediction.** Before running `boulders`: how many replans did you expect, and why? What did you get?
